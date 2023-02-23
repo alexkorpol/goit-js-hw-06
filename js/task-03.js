@@ -22,27 +22,11 @@ const images = [
 // Все элементы галереи должны добавляться в DOM за одну операцию вставки.
 // Добавь минимальное оформление галереи флексбоксами или гридами через 
 // CSS классы.
+
 const list = document.querySelector(".gallery");
-// const markup = images
-//       .map((image) => `<img class = "img-line"
-//       src = ">${url}" alt = ${alt}>`)
-//       .join("");
+const imageItems = images.map(function ({ url, alt }) {
+  return `<li><img class = "img-line" src ="${url}" alt = "${alt}" width = "320" ></li>`;
+}).join('');
+list.insertAdjacentHTML('beforeend', imageItems);
 
 
-
-
-
-
-// list.insertAdjacentHTML("afterbegin", markup);
-
-console.log("Here are you?", list);
-
-// const list = document.querySelector(".list");
-
-// const newTechnologies = ["React", "TypeScript", "Node.js"];
-// const markup = newTechnologies
-//   .map((technology) => `<li class="list-item new">${technology}</li>`)
-//   .join("");
-
-// list.insertAdjacentHTML("beforeend", markup);
-// list.insertAdjacentHTML("beforebegin", "<h2>Popular technologies</h2>");

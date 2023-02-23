@@ -49,4 +49,6 @@ ingredientsCopy = ingredients.map(ingredient => {
     return elementArray;
 });
 
+console.log(ingredientsCopy);
+
 list.append(...ingredientsCopy);
