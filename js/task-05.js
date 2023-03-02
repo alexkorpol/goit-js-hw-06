@@ -13,7 +13,7 @@ inputName.addEventListener("input", letter);
 function letter(event) {
     span.textContent = event.currentTarget.value;
     if (span.textContent === "") {
-        return span.textContent =  "Anonymous5"
+        return span.textContent =  "Anonymous"
         }
     } 
     

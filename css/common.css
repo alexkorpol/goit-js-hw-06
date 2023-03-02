@@ -35,3 +35,8 @@ button {
   height: 212px;
 }
 /* End for task-03 */
+/* For task-04 */
+#counter button {
+  background-color: yellowgreen;
+  border-radius: 4px;
+}
