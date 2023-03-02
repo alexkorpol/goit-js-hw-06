@@ -28,15 +28,14 @@ const inputNameLenght = Number(inputName.dataset.length);
 inputName.addEventListener("blur", lostFocus);
 
 function lostFocus(event) {
-    // console.log("event.currentTarget.value", event.currentTarget.value, "event.currentTarget.value", event.currentTarget.value.length);
-
     if (event.currentTarget.value.length === inputNameLenght) {        
         inputName.classList.add("valid");
         inputName.classList.remove("invalid");        
+
     } else {
-       
+        
         inputName.classList.add("invalid");
         inputName.classList.remove("valid");        
-    }
+    };
 }
 
