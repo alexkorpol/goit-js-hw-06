@@ -17,17 +17,15 @@
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
-console.log(getRandomHexColor());
-console.log(getRandomHexColor());
-console.log(getRandomHexColor());
-const newColor = getRandomHexColor();
-const body = document.body;
-console.log(body);
 
-const BtnChangeColor = document.querySelector(".change-color");
-console.log("BtnChangeColor:", BtnChangeColor);
-BtnChangeColor.addEventListener("click", changeColor);
-function changeColor(even) {
-  body.style.backgroundColor = newColor;
+const bodyElem = document.body;
+const spanColorElem = document.querySelector(".color")
 
+const BtnChangeColorElem = document.querySelector(".change-color");
+
+BtnChangeColorElem.addEventListener("click", changeColor);
+function changeColor() {
+  const newColorClick = getRandomHexColor();
+  bodyElem.style.backgroundColor = newColorClick;
+  spanColorElem.textContent = newColorClick;
 }
