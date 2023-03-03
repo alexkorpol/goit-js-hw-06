@@ -8,8 +8,6 @@
 // Выведи обьект с введенными данными в консоль и очисти значения полей формы методом reset.
 
 const loginForm = document.querySelector(".login-form");
-console.log("loginForm==>>", loginForm);
-
 loginForm.addEventListener("submit", treatmentSubmit);
 
 
@@ -19,9 +17,7 @@ function treatmentSubmit(event) {
     const {
     elements: { email, password }
     } = event.currentTarget;
-    console.log("event.currentTarget", event.currentTarget.elements)
-    console.log("email", email.innerHTML, "password", password.innerHTML);
-    console.log("email.value", email.value, "password.value", password.value);
+    
     
     if (email.value === "" || password.value === "") {
     alert("Please fill in all the fields!");
