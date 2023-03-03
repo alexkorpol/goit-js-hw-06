@@ -1,18 +1,11 @@
-// Напиши скрипт создания и очистки коллекции элементов. 
+// Напиши скрипт создания и очистки коллекции элементов.
 // Пользователь вводит количество элементов в input и нажимает кнопку
-// Создать, после чего рендерится коллекция.При нажатии на кнопку 
+// Создать, после чего рендерится коллекция.При нажатии на кнопку
 // Очистить, коллекция элементов очищается.
 
-// <div id="controls">
-//   <input type="number" min="1" max="100" step="1" />
-//   <button type="button" data-create>Create</button>
-//   <button type="button" data-destroy>Destroy</button>
-// </div>
-
-// <div id="boxes"></div>
 
 // Создай функцию createBoxes(amount), которая принимает один параметр
-// - число.Функция создает столько < div >, сколько указано в amount 
+// - число.Функция создает столько < div >, сколько указано в amount
 // и добавляет их в div#boxes.
 
 // Размеры самого первого <div> - 30px на 30px.
@@ -26,34 +19,51 @@
 //     .padStart(6, 0)}`;
 // }
 
-// Создай функцию destroyBoxes(), которая очищает содержимое 
+// Создай функцию destroyBoxes(), которая очищает содержимое
 // div#boxes, тем самым удаляя все созданные элементы.
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-const inputNumberElem = document.querySelector('#controls').firstElementChild;
-console.log("inputNumberElem:", inputNumberElem);
+// const inputNumberElem = document.querySelector('#controls').firstElementChild;
+const inputNumberElem = document.querySelector('[type="number"]');
 const btnCreate = document.querySelector('button[data-create]');
-console.log("btnCreate:", btnCreate);
 const btnDestroy = document.querySelector('button[data-destroy]');
-console.log("btnDestroy:", btnDestroy);
-let rangeNumber = 1;
+const divBoxes = document.querySelector('#boxes');
+let selectNumber = 1;
+
 
 function getNumber() {
-  rangeNumber = inputNumberElem.value;
-  console.log("rangeNumber:", rangeNumber);
+  selectNumber = inputNumberElem.value;
+  createBoxes(selectNumber);
 }
 
-function clearNumber() {
-  inputNumberElem.value = 1;
-  rangeNumber = 1;
-  console.log("rangeNumber:", rangeNumber);
+function destroyBoxes() {
+  //  1-й вариант (работает быстрее второго)
+  inputNumberElem.value = "";
+  const arrRemoves = divBoxes.childNodes;
+  const arrRemovesDivAdd = [...arrRemoves];
+  arrRemovesDivAdd.map(el => el.remove());
+
+  // 2-й вариант
+  // location.reload();
+  }
+  
+
+function createBoxes(amount) {
+  const arrDivBoxes = [];
+  for (let i = 0; i < amount; i += 1) {
+    const arrDivOneElement = 
+     `<div style = "width:${String(30 + 10 * i)}px; 
+                    height:${String(30 + 10 * i)}px; 
+                    background-color: ${getRandomHexColor()}"></div>`;
+    arrDivBoxes.push(arrDivOneElement);
+  }
+    
+    divBoxes.insertAdjacentHTML('afterbegin', arrDivBoxes.join(''));
 }
-btnCreate.addEventListener("click", getNumber); 
-btnDestroy.addEventListener("click", clearNumber); 
+  
 
-
-// incrBtn.addEventListener("click", () => { counterValue += 1; counter.textContent = counterValue; });
-
+btnCreate.addEventListener("click", getNumber);
+btnDestroy.addEventListener("click", destroyBoxes);
